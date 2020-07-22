@@ -1,0 +1,5 @@
+com/arnabjisit/leadcrm/leadcrm/LeadCrmApplication.class
+com/arnabjisit/leadcrm/leadcrm/repository/LeadsRepository.class
+com/arnabjisit/leadcrm/leadcrm/model/Leads.class
+com/arnabjisit/leadcrm/leadcrm/resource/DBServerResource.class
+com/arnabjisit/leadcrm/leadcrm/model/Lead.class

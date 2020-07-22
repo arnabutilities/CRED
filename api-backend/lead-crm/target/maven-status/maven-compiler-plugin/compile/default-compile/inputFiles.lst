@@ -1,0 +1,5 @@
+/home/arnab/dev/CRED/api-backend/lead-crm/src/main/java/com/arnabjisit/leadcrm/leadcrm/repository/LeadsRepository.java
+/home/arnab/dev/CRED/api-backend/lead-crm/src/main/java/com/arnabjisit/leadcrm/leadcrm/resource/DBServerResource.java
+/home/arnab/dev/CRED/api-backend/lead-crm/src/main/java/com/arnabjisit/leadcrm/leadcrm/LeadCrmApplication.java
+/home/arnab/dev/CRED/api-backend/lead-crm/src/main/java/com/arnabjisit/leadcrm/leadcrm/model/Leads.java
+/home/arnab/dev/CRED/api-backend/lead-crm/src/main/java/com/arnabjisit/leadcrm/leadcrm/model/Lead.java
