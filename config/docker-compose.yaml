@@ -1,0 +1,19 @@
+version: '2'
+
+networks:
+  app-tier:
+    driver: bridge
+
+services:
+  mysql:
+    image: 'bitnami/mysql:latest'
+    ports:
+      - 3306:3306
+    environment:
+      - ALLOW_EMPTY_PASSWORD=${ALLOW_EMPTY_PASSWORD}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+    networks:
+      - app-tier
+
