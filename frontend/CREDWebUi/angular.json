@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "CREDWebUi"
+    }
+  },
+  "defaultProject": "CREDWebUi",
+  "cli": {
+    "analytics": "5fc79b17-5332-45cc-b631-d4817f4c2d40"
+  }
 }
