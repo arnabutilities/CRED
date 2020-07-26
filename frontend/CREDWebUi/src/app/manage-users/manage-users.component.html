@@ -1,1 +1,42 @@
-<p>manage-users works!</p>
+<div class="employee-container">
+  <form [formGroup]="employees">
+
+    <mat-form-field appearance="fill" [floatLabel]="firstNameControl.value">
+      <mat-label>First Name</mat-label>
+      <input matInput placeholder="Employee first name" [formControl]="firstNameControl">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" [floatLabel]="lastNameControl.value">
+      <mat-label>Last Name</mat-label>
+      <input matInput placeholder="Employee last name" [formControl]="lastNameControl">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" [floatLabel]="dobControl.value">
+      <mat-label>Date of Birth</mat-label>
+      <input matInput [matDatepicker]="picker1" [formControl]="dobControl">
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+    
+    <mat-form-field appearance="fill"
+        [hideRequiredMarker]="true"
+        [floatLabel]="deptControl.value">
+      <mat-select [formControl]="deptControl">
+        <mat-option *ngFor="let dept of depts | keyvalue" [value]="dept.key">{{dept.value}}</mat-option>
+      </mat-select>
+      <mat-label>Department</mat-label>
+    </mat-form-field>
+
+    <section>
+    <div class="employee-button-row">
+      <label>Gender </label>
+      <mat-radio-group [formControl]="genderControl">
+        <mat-radio-button *ngFor="let gender of genders | keyvalue" [value]="gender.key">{{gender.value}}</mat-radio-button>
+      </mat-radio-group>
+
+      <button mat-flat-button color="primary" [disabled]="!employees.valid" (click)="createUser()">Register</button>
+
+    </div>
+    </section>
+  </form>
+</div>

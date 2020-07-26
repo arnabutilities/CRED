@@ -1,0 +1,19 @@
+.employee-container .mat-form-field + .mat-form-field {
+    margin-left: 8px;
+  }
+  
+  .employee-container .mat-form-field {
+    width: 220px;
+  }
+  
+  .employee-container form {
+    margin-bottom: 20px;
+  }
+  
+  .employee-container form > * {
+    margin: 5px 0;
+  }
+  
+  .employee-container .mat-radio-button {
+    margin: 0 12px;
+  }
