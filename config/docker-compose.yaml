@@ -6,6 +6,7 @@ networks:
 
 services:
   mysql:
+    container_name: db
     image: 'bitnami/mysql:latest'
     ports:
       - 3306:3306
@@ -17,6 +18,7 @@ services:
     networks:
       - app-tier
 
+<<<<<<< Updated upstream
   angular:
     tty: true # Enables debugging capabilities when attached to this container.
     image: 'docker.io/bitnami/node:12.18.3-prod'
@@ -45,3 +47,46 @@ services:
 #    networks:
 #      - app-tier
 
+=======
+  reverse_proxy_static_frontend:
+    container_name: api
+    image: openjdk:8-jdk-alpine
+    volumes:
+      - ../api-backend/lead-crm/jar:/var/www/spring-boot
+    working_dir: /var/www/spring-boot
+    command: java -jar app.jar
+    user: root
+    restart: always
+    ports:
+      - 8300:8300
+    networks:
+      - app-tier
+
+  nginx_reverse_proxy:
+    container_name: proxy
+    image: nginx:latest
+    container_name: production_nginx
+    volumes:
+      - ./nginx/reverse_proxy_nossl.conf:/etc/nginx/conf.d/default.conf
+      - ../frontend/CREDWebUi/dist/CREDWebUi:/etc/nginx/html
+    ports:
+      - 80:80
+    links:
+     - reverse_proxy_static_frontend
+    networks:
+     - app-tier
+
+  angular:
+    image: 'docker.io/bitnami/node:12.18.3-prod'
+    ports:
+      - 3000:3000
+    volumes:
+      - ../frontend/ProxyLayer:/app/express
+      - ../frontend/CREDWebUi/dist:/app/express/src/public
+    working_dir: /app/express
+    command: npm install 
+    command: npm build
+    command: npm start
+    networks:
+      - app-tier 
+>>>>>>> Stashed changes
