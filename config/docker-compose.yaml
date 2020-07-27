@@ -17,3 +17,31 @@ services:
     networks:
       - app-tier
 
+  angular:
+    tty: true # Enables debugging capabilities when attached to this container.
+    image: 'docker.io/bitnami/node:12.18.3-prod'
+    ports:
+      - 80:3000
+    volumes:
+      - ../frontend/ProxyLayer:/app/express
+      - ../frontend/CREDWebUi/dist:/app/express/public
+    working_dir: /app/express
+    command: npm install
+    command: npm build
+    command: npm start
+
+    networks:
+      - app-tier 
+
+#  angular:
+#    image: 'bitnami/mysql:latest'
+#    ports:
+#      - 3306:3306
+#    environment:
+#      - ALLOW_EMPTY_PASSWORD=${ALLOW_EMPTY_PASSWORD}
+#      - MYSQL_USER=${MYSQL_USER}
+#      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+#      - MYSQL_DATABASE=${MYSQL_DATABASE}
+#    networks:
+#      - app-tier
+

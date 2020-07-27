@@ -71,8 +71,7 @@ export class ManageUsersComponent implements OnInit {
 
   async createUser() {
     try {
-      let e:IApiService<Employee> = new RESTApiServiceForEmployee (this.http);
-      e.setProperties(REST_API_PROPERTIES.URL, API_END_POINTS.ADD_EMPLOYEE );
+      let e:IApiService<Employee> = new RESTApiServiceForEmployee (this.http, API_END_POINTS.ADD_EMPLOYEE );
 
       let emp = new EmployeeService();
       let httpClientResponse = await emp.add(this.createEmployeeFromForm(this.employees), e);
