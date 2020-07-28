@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface LeadsRepository extends JpaRepository<Lead, Integer> {
     List<Lead> findByUserName (String username);
+    List<Lead> findAll();
 }

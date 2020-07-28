@@ -87,7 +87,7 @@ export class ManageUsersComponent implements OnInit {
     e.lastName=  f.value.lastName;
     e.dob=  f.value.dob;
     e.gender=  f.value.gender;
-    e.department=  f.value.department;
+    e.department=  f.value.dept;
     return e;
   }
 

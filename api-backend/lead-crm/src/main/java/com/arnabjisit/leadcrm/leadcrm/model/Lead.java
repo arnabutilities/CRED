@@ -1,5 +1,7 @@
 package com.arnabjisit.leadcrm.leadcrm.model;
 
+import springfox.documentation.spring.web.json.Json;
+
 import javax.persistence.*;
 
 @Entity
@@ -25,6 +27,9 @@ public class Lead {
 
     @Column(name = "dob_ts")
     private String dob;
+
+    @Column(name = "department")
+    private String department;
 
     public Integer getId() {
         return id;
@@ -73,10 +78,27 @@ public class Lead {
     public void setDob(String dob) {
         this.dob = dob;
     }
+    public Json getJson(){
+
+        return new Json("{" +
+                "\"id\":" + id +
+                ", \"userName\":\"" + userName + "\"" +
+                ", \"firstName\":\"" + firstName + "\"" +
+                ", \"dob\":\"" + dob + "\"" +
+                ", \"gender\":\"" + gender + "\"" +
+                ", \"lastName\":\"" + lastName +"\"" +
+                ", \"department\":\"" + department +"\"" +
+                '}');
+    }
 
     public Lead() {
     }
-    public static Lead getInstance(Object props) {
-        return new Lead();
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
     }
 }
