@@ -18,36 +18,6 @@ services:
     networks:
       - app-tier
 
-<<<<<<< Updated upstream
-  angular:
-    tty: true # Enables debugging capabilities when attached to this container.
-    image: 'docker.io/bitnami/node:12.18.3-prod'
-    ports:
-      - 80:3000
-    volumes:
-      - ../frontend/ProxyLayer:/app/express
-      - ../frontend/CREDWebUi/dist:/app/express/public
-    working_dir: /app/express
-    command: npm install
-    command: npm build
-    command: npm start
-
-    networks:
-      - app-tier 
-
-#  angular:
-#    image: 'bitnami/mysql:latest'
-#    ports:
-#      - 3306:3306
-#    environment:
-#      - ALLOW_EMPTY_PASSWORD=${ALLOW_EMPTY_PASSWORD}
-#      - MYSQL_USER=${MYSQL_USER}
-#      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
-#      - MYSQL_DATABASE=${MYSQL_DATABASE}
-#    networks:
-#      - app-tier
-
-=======
   reverse_proxy_static_frontend:
     container_name: api
     image: openjdk:8-jdk-alpine
@@ -76,17 +46,16 @@ services:
     networks:
      - app-tier
 
-  angular:
-    image: 'docker.io/bitnami/node:12.18.3-prod'
-    ports:
-      - 3000:3000
-    volumes:
-      - ../frontend/ProxyLayer:/app/express
-      - ../frontend/CREDWebUi/dist:/app/express/src/public
-    working_dir: /app/express
-    command: npm install 
-    command: npm build
-    command: npm start
-    networks:
-      - app-tier 
->>>>>>> Stashed changes
+  # angular:
+  #   image: 'docker.io/bitnami/node:12.18.3-prod'
+  #   ports:
+  #     - 3000:3000
+  #   volumes:
+  #     - ../frontend/ProxyLayer:/app/express
+  #     - ../frontend/CREDWebUi/dist:/app/express/src/public
+  #   working_dir: /app/express
+  #   command: npm install 
+  #   command: npm build
+  #   command: npm start
+  #   networks:
+  #     - app-tier 
