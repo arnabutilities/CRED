@@ -22,9 +22,9 @@ services:
     container_name: api
     image: openjdk:8-jdk-alpine
     volumes:
-      - ../api-backend/lead-crm/jar:/var/www/spring-boot
+      - ../api-backend/lead-crm/target:/var/www/spring-boot
     working_dir: /var/www/spring-boot
-    command: java -jar app.jar
+    command: java -jar lead-crm-0.0.1-SNAPSHOT.jar
     user: root
     restart: always
     ports:
