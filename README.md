@@ -102,6 +102,10 @@ open a browser in your host machine for VM.
 provide http://<VIRTUAL_MACHINE_IP>/frontend in address bar.
 this will open the application in browser window
 ```
-NOTE: make sure port 80 is open and available. 
+NOTE: make sure port 80 is open and available. incase continuous db connection failure, please stop firewall or whitelist ports used in application
+
+```
+systemctl stop firewalld
+```
 
 
