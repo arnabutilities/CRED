@@ -38,7 +38,7 @@ services:
     container_name: frontend
     image: nginx:latest
     volumes:
-      - ../frontend/CREDWebUi/dist/CREDWebUi:/var/www/html/frontend
+      - ../frontend/CREDWebUi/dist/CREDWebUi:/usr/share/nginx/html/frontend
     user: root
     restart: always
     ports:
@@ -53,7 +53,6 @@ services:
     image: nginx:latest
     volumes:
       - ./nginx/reverse_proxy_nossl.conf:/etc/nginx/conf.d/default.conf
-      - ../frontend/CREDWebUi/dist/CREDWebUi:/etc/nginx/html
     ports:
       - 80:80
     links:
