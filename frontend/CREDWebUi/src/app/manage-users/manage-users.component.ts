@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { RESTApiServiceForEmployee, REST_API_PROPERTIES } from '../services/rest-api-service';
-import { EmployeeService} from '../services/employee-service';
+import { EmployeeService, EMPLOYEE_SERVICE_STATUS} from '../services/employee-service';
 import { Employee } from '../models/Employee';
 import { IApiService } from '../services/IApiService';
 import { API_END_POINTS } from '../config/rest-endpoint.config';
@@ -46,11 +46,11 @@ export class ManageUsersComponent implements OnInit {
   genders:Map<string, string> = new Map <string, string>(); 
 
 
-  constructor(fb: FormBuilder, private http:HttpClient) {
+  constructor(fb: FormBuilder, private http:HttpClient, private emp:EmployeeService) {
 
     this.depts.set('dep1', 'DEPT 1')
               .set('dep2', 'DEPT 2')
-              .set('dep3', 'DEPT 2');
+              .set('dep3', 'DEPT 3');
 
     this.genders.set('female', 'Female')
              .set('male', 'Male')
@@ -73,8 +73,9 @@ export class ManageUsersComponent implements OnInit {
     try {
       let e:IApiService<Employee> = new RESTApiServiceForEmployee (this.http, API_END_POINTS.ADD_EMPLOYEE );
 
-      let emp = new EmployeeService();
-      let httpClientResponse = await emp.add(this.createEmployeeFromForm(this.employees), e);
+      let httpClientResponse = await this.emp.add(this.createEmployeeFromForm(this.employees), e);
+
+      this.emp.notify(EMPLOYEE_SERVICE_STATUS.NEW_USER_ADD_SUCCESS);
 
     } catch (e){
       console.log(<HttpErrorResponse> e.message);
@@ -85,10 +86,14 @@ export class ManageUsersComponent implements OnInit {
     let e:Employee = new Employee();
     e.firstName = f.value.firstName;
     e.lastName=  f.value.lastName;
-    e.dob=  f.value.dob;
+    e.dob=  this.formatDate(new Date(f.value.dob))
     e.gender=  f.value.gender;
     e.department=  f.value.dept;
     return e;
+  }
+  formatDate(d:Date):String{
+    let formattedDate = d.getDate()+"/"+d.getMonth()+"/"+d.getFullYear();
+    return formattedDate;
   }
 
 }

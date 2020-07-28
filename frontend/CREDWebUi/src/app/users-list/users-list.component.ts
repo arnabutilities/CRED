@@ -7,7 +7,7 @@ import { Employee } from '../models/Employee';
 import { RESTApiServiceForEmployee, REST_API_PROPERTIES } from '../services/rest-api-service';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { API_END_POINTS } from '../config/rest-endpoint.config';
-import { EmployeeService } from '../services/employee-service';
+import { EmployeeService, EMPLOYEE_SERVICE_STATUS } from '../services/employee-service';
 
 export interface PeriodicElement {
   name: string;
@@ -35,18 +35,18 @@ export class UsersListComponent implements OnInit {
   ngOnInit() {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
-    this.listUser();    
+    this.listUser();
+    this.emp.listen(EMPLOYEE_SERVICE_STATUS.NEW_USER_ADD_SUCCESS, () => this.listUser());
   }
-  constructor(private http:HttpClient){
+  constructor(private http:HttpClient, private emp:EmployeeService){
 
   }
 
   async listUser() {
     try {
       let e:IApiService<Employee> = new RESTApiServiceForEmployee (this.http, API_END_POINTS.LIST_EMPLOYEE );
-      let emp = new EmployeeService();
 
-      let httpClientResponse = await emp.search( null , e);
+      let httpClientResponse = await this.emp.search( null , e);
       if(httpClientResponse) {
         this.dataSource.data =  httpClientResponse;
       }
