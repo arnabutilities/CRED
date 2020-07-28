@@ -18,7 +18,7 @@ services:
     networks:
       - app-tier
 
-  reverse_proxy_static_frontend:
+  api:
     container_name: api
     image: openjdk:8-jdk-alpine
     volumes:
@@ -29,6 +29,22 @@ services:
     restart: always
     ports:
       - 8300:8300
+    links:
+      - nginx_reverse_proxy
+    networks:
+      - app-tier
+
+  frontend:
+    container_name: frontend
+    image: nginx:latest
+    volumes:
+      - ../frontend/CREDWebUi/dist/CREDWebUi:/var/www/html/frontend
+    user: root
+    restart: always
+    ports:
+      - 8400:80
+    links:
+      - nginx_reverse_proxy
     networks:
       - app-tier
 
@@ -41,7 +57,7 @@ services:
     ports:
       - 80:80
     links:
-     - reverse_proxy_static_frontend
+     - mysql
     networks:
      - app-tier
 
