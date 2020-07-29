@@ -37,8 +37,8 @@ public class DBServerResource {
     }
 
     @PostMapping ("/add")
-    public ResponseEntity<String> addLead(@RequestBody final Lead lead) {
-        leadsRepository.save(lead);
-        return new ResponseEntity<String>("Product updated successfully", HttpStatus.OK);
+    public ResponseEntity<Lead> addLead(@RequestBody final Lead lead) {
+       // leadsRepository.save(lead);
+        return new ResponseEntity<Lead>(leadsRepository.save(lead), HttpStatus.OK);
     }
 }
