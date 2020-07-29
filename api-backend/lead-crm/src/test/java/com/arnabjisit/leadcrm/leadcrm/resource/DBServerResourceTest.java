@@ -40,7 +40,7 @@ class DBServerResourceTest {
     public void testGetLeads() {
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<Object> entity = new HttpEntity<Object>(null, headers);
-        ResponseEntity<Object> response = restTemplate.exchange(getRootUrl() + "/app/api/arnab",
+        ResponseEntity<Object> response = restTemplate.exchange(getRootUrl() + "/app/api/someuser",
                 HttpMethod.GET, entity, Object.class );
         assertNotNull(response.getBody());
     }
