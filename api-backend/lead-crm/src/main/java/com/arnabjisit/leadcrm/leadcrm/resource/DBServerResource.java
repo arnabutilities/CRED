@@ -2,6 +2,8 @@ package com.arnabjisit.leadcrm.leadcrm.resource;
 
 import com.arnabjisit.leadcrm.leadcrm.model.Lead;
 import com.arnabjisit.leadcrm.leadcrm.repository.LeadsRepository;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.spring.web.json.Json;
 
@@ -35,11 +37,8 @@ public class DBServerResource {
     }
 
     @PostMapping ("/add")
-    public List<Json> addLead(@RequestBody final Lead lead) {
+    public ResponseEntity<String> addLead(@RequestBody final Lead lead) {
         leadsRepository.save(lead);
-        return leadsRepository.findByUserName(lead.getUserName())
-                .stream()
-                .map(l ->  l.getJson())
-                .collect(Collectors.toList());
+        return new ResponseEntity<String>("Product updated successfully", HttpStatus.OK);
     }
 }
