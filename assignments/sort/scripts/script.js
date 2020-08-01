@@ -46,7 +46,7 @@ window.onload = (ev) => {
     var htmlCollectionObject = document.querySelectorAll(".position");
     const fragment = document.createDocumentFragment();
 
-    document.querySelector("#shuffle").addEventListener("click", (e) => {
+    document.querySelector("#shuffle").addEventListener("click", (event) => {
         var suffledArr = suffleArr([...htmlCollectionObject]);
         suffledArr.map((e, i) => {
             fragment.appendChild(e);
@@ -56,8 +56,8 @@ window.onload = (ev) => {
 
     document.querySelector("#sort").addEventListener("click", (e) => {
         var sortedArr = sort([...htmlCollectionObject]);
-        sortedArr.map((e, i) => {
-            fragment.appendChild(e);
+        sortedArr.map((element, i) => {
+            fragment.appendChild(element);
         });
         document.querySelector('ul').appendChild(fragment);
     });

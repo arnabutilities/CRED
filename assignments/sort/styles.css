@@ -37,8 +37,66 @@ button {
     line-height: 30px;
     margin-bottom: 30px;
 }
+.position:nth-child(1){
+    background-color:#6F98A8;
+  }
+  .position:nth-child(2){
+    background-color:#2B8EAD;
+  }
+  .position:nth-child(3){
+    background-color:#2F454E;
+  }
+  .position:nth-child(4){
+    background-color:#2B8EAD;
+  }
+  .position:nth-child(5){
+    background-color:#2F454E;
+  }
+  .position:nth-child(6){
+    background-color:#BFBFBF;
+  }
+  .position:nth-child(7){
+    background-color:#BFBFBF;
+  }
+  .position:nth-child(8){
+    background-color:#6F98A8;
+  }
+  .position:nth-child(9){
+    background-color:#2F454E;
+  }
 @media only screen and (max-width: 375px) {
-    
+    .title.panel{
+        background-color: #333333;
+        color: #ffffff;
+        font-size: 1.5rem;
+        line-height: 3rem;
+        text-align: center;
+    }
+    .position{
+        width:100%;
+        margin: 5px 10px;
+        line-height: 30px;
+        font-weight: 600;
+        text-align: center;
+        background-color: #EFEFEF;
+    }
+    .position .value{
+        width: 98%;
+        display: block;
+        background-color: #EFEFEF;
+        margin-left: 2%;
+    }
+    .button.panel{
+        text-align: center;
+    }
+    button {
+        width: 40%;
+        margin-top: 20px;
+    }
+    .footer.panel{
+        text-align:center;
+        font-size: 0.8rem;
+    }
   }
 
   @media only screen and (min-width: 376px)  and (max-width: 960px)  {
@@ -90,32 +148,5 @@ button {
         line-height:200px;
         display: block;
         color: #ffffff;
-    }
-    .position:nth-child(1){
-        background-color:#6F98A8;
-      }
-      .position:nth-child(2){
-        background-color:#2B8EAD;
-      }
-      .position:nth-child(3){
-        background-color:#2F454E;
-      }
-      .position:nth-child(4){
-        background-color:#2B8EAD;
-      }
-      .position:nth-child(5){
-        background-color:#2F454E;
-      }
-      .position:nth-child(6){
-        background-color:#BFBFBF;
-      }
-      .position:nth-child(7){
-        background-color:#BFBFBF;
-      }
-      .position:nth-child(8){
-        background-color:#6F98A8;
-      }
-      .position:nth-child(9){
-        background-color:#2F454E;
-      }    
+    }    
   }
