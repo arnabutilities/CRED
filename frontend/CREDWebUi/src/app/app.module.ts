@@ -4,9 +4,9 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import {UsersModule} from './users/users.module';
 import { HttpClientModule  } from '@angular/common/http';
-import { EmployeeService } from './services/employee-service';
+import {  EcommerceService } from './services/ecommerce-service';
+import { DellModule} from './dell/dell.module';
 
 @NgModule({
   declarations: [
@@ -16,9 +16,9 @@ import { EmployeeService } from './services/employee-service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule ,
-    UsersModule
+    DellModule
   ],
-  providers: [EmployeeService],
+  providers: [EcommerceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

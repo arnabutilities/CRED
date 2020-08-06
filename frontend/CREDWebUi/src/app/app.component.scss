@@ -36,9 +36,27 @@
     height: 60px;
     display: flex;
     align-items: center;
-    background-color: #1976d2;
+    background-color: #000000;
     color: white;
     font-weight: 600;
+    max-width: 960px;
+    margin: auto;
+    a{
+      color:#ffffff;
+      font-weight: normal;
+    }
+    ul {
+      margin:0;
+      padding:0;
+      display: flex;
+      li{
+        margin:0;
+        padding:0;
+        flex-wrap: wrap;
+        list-style: none;
+        padding:10px;
+      }
+    }
   }
 
   .toolbar img {
@@ -53,10 +71,31 @@
   .toolbar #twitter-logo:hover {
     opacity: 0.8;
   }
+  .super-Nav{
+    color: black;
+    font-weight: 600;
+    a{
+      color:#000000;
+      font-weight: 600;
+    }
+    ul {
+      margin:0;
+      padding:0;
+      display: flex;
+      margin-left: auto;
+      li{
+        margin:0;
+        padding:0;
+        flex-wrap: wrap;
+        list-style: none;
+        padding:10px;
+      }
+    }
+  }
 
   .content {
     display: flex;
-    margin: 82px auto 32px;
+    margin: 60px auto 10px;
     padding: 0 16px;
     max-width: 960px;
     flex-direction: column;
@@ -122,8 +161,8 @@
   }
 
   .card.highlight-card {
-    background-color: #1976d2;
-    color: white;
+    background-color: #EfEfEF;
+    color: #c2c3c4;
     font-weight: 600;
     border: none;
     width: auto;
@@ -141,19 +180,10 @@
     left: -10px;
     top: -24px;
   }
-
-  svg#rocket-smoke {
-    height: calc(100vh - 95px);
-    position: absolute;
-    top: 10px;
-    right: 180px;
-    z-index: -10;
-  }
-
   a,
   a:visited,
   a:hover {
-    color: #1976d2;
+
     text-decoration: none;
   }
 

@@ -1,5 +1,5 @@
 import { IApiService } from "./IApiService";
-import { Employee } from "../models/Employee";
+import { Product } from "../models/Product";
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { JwtExceptions } from "../exceptions/JwtExceptions";
 import { RestException } from "../exceptions/RestException";
@@ -16,7 +16,7 @@ export enum REST_API_PROPERTIES {
     METHOD = 'method'
 }
 
-export class RESTApiServiceForEmployee implements IApiService<Employee>{
+export class RESTApiServiceForProduct implements IApiService<Product>{
 
     private apiOptions: Map<REST_API_PROPERTIES, any> = new Map<REST_API_PROPERTIES, any>();
 
@@ -24,7 +24,7 @@ export class RESTApiServiceForEmployee implements IApiService<Employee>{
         this.apiOptions.set(key, value);
     }
 
-    private prepareProperties(): Observable<Employee> {
+    private prepareProperties(): Observable<Product> {
         if (!this.apiOptions) throw new Error('ApiOptions is not set!!');
 
         let headers = this.apiOptions.get(REST_API_PROPERTIES.HEADERS);
@@ -33,26 +33,26 @@ export class RESTApiServiceForEmployee implements IApiService<Employee>{
             httpHeaders = new HttpHeaders(headers)
         }
         if (this.apiOptions.get(REST_API_PROPERTIES.METHOD) == 'GET') {
-            return <Observable<Employee>> this.httpClient.get(this.apiOptions.get(REST_API_PROPERTIES.URL), { headers: httpHeaders });
+            return <Observable<Product>> this.httpClient.get(this.apiOptions.get(REST_API_PROPERTIES.URL), { headers: httpHeaders });
         }
         if (this.apiOptions.get(REST_API_PROPERTIES.METHOD) == 'POST') {
-            return <Observable<Employee>> this.httpClient.post(
+            return <Observable<Product>> this.httpClient.post(
                 this.apiOptions.get(REST_API_PROPERTIES.URL),
                 this.apiOptions.get(REST_API_PROPERTIES.PAYLOAD),
                 { headers: httpHeaders }
             );
         }
     }
-    getData(): Promise<Employee> {
+    getData(): Promise<Product> {
         this.apiOptions.set(REST_API_PROPERTIES.METHOD, 'GET');
         return this.prepareProperties().toPromise();
     }
-    postData(): Promise<Employee> {
+    postData(): Promise<Product> {
         this.apiOptions.set(REST_API_PROPERTIES.METHOD, 'POST');
         return this.prepareProperties().toPromise();
     }
     
-    filterData(): Promise<Employee[]> {
+    filterData(): Promise<Product[]> {
         if (!this.apiOptions) throw new Error('ApiOptions is not set!!');
 
         let headers = this.apiOptions.get(REST_API_PROPERTIES.HEADERS);
@@ -60,7 +60,7 @@ export class RESTApiServiceForEmployee implements IApiService<Employee>{
         if (headers) {
             httpHeaders = new HttpHeaders(headers)
         }
-        return <Promise<Employee[]>> this.httpClient.post(
+        return <Promise<Product[]>> this.httpClient.post(
             this.apiOptions.get(REST_API_PROPERTIES.URL),
             this.apiOptions.get(REST_API_PROPERTIES.PAYLOAD),
             { headers: httpHeaders }

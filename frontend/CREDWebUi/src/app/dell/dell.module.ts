@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { ManageUsersComponent } from '../manage-users/manage-users.component';
+import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
@@ -50,15 +50,15 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
-import { UsersListComponent } from '../users-list/users-list.component';
+import { HomeComponent } from '../home/home.component';
 
 
 @NgModule({
   declarations: [
-    ManageUsersComponent,
-    UsersListComponent
+    HomeComponent
   ],
   imports: [
+    CommonModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
     MatSelectModule,
@@ -110,11 +110,8 @@ import { UsersListComponent } from '../users-list/users-list.component';
 //    PortalModule,
 //    ScrollingModule,
   ],
-  exports: [
-    ManageUsersComponent, UsersListComponent
-  ],
-  providers: [
-    {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}
+  exports:[
+    HomeComponent
   ]
 })
-export class UsersModule { }
+export class DellModule { }

@@ -1,4 +1,3 @@
-import { Employee } from "../models/Employee";
 import { IApiService } from './IApiService';
 
 export interface IModelService<T> {
