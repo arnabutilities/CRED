@@ -1,4 +1,4 @@
-# CRED
+# CRUD
 Repository for simple CRED operation with mysql+spring-boot-JPA+angular+docker
 
 ## Steps to deploy application in a new VM
@@ -108,4 +108,6 @@ NOTE: make sure port 80 is open and available. incase continuous db connection f
 systemctl stop firewalld
 ```
 
+settingup action:
+reference: https://www.youtube.com/watch?v=X3F3El_yvFg
 
